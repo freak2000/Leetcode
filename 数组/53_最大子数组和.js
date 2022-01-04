@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// 利用动态规划，f(i)=max(f(i-1)+nums[i],nums[i])
 var maxSubArray = function(nums) {
   let enb = 0, ans = nums[0]
   nums.forEach((x) => {
@@ -12,4 +13,4 @@ var maxSubArray = function(nums) {
   })
   return ans
 };
-// 利用动态规划，f(i)=max(f(i-1)+nums[i],nums[i])
+
