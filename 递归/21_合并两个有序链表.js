@@ -15,7 +15,7 @@ var mergeTwoLists1 = function(list1, list2) {
   }
 };
 
-// 迭代法
+// 递归法
 
  function ListNode(val, next) {
    this.val = (val===undefined ? 0 : val)
@@ -40,4 +40,4 @@ var mergeTwoLists2 = function(list1, list2) {
     return ans.next
 };
 
-// 递归法
+// 迭代法
