@@ -1,12 +1,12 @@
-var reverseList = function(head) {
-  if (!head || !head.next) {
-    return head
-  }
-  let newHead = new reverseList(head.next)
-  head.next.next = head
-  head.next = null
-  return newHead
-};
+// var reverseList = function(head) {
+//   if (!head || !head.next) {
+//     return head
+//   }
+//   let newHead = new reverseList(head.next)
+//   head.next.next = head
+//   head.next = null
+//   return newHead
+// };
 // 递归法
 
 var reverseList = function(head) {
@@ -18,6 +18,16 @@ var reverseList = function(head) {
     pre = cur
     cur = next
   }
+  console.log(pre.next+' ')
   return pre
 };
 // 迭代法
+
+let head = new ListNode(9,new ListNode(3,new ListNode(5, 6)))
+
+reverseList(head)
+
+ function ListNode(val, next) {
+   this.val = (val===undefined ? 0 : val)
+   this.next = (next===undefined ? null : next)
+ }
