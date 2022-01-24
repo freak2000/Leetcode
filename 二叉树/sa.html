@@ -10,7 +10,9 @@
         this.name = 'd'
       }
       let people = new People()
-      console.log(typeof People)
+      console.log(typeof People.prototype)
+      console.log(People.prototype.constructor === People)
+      console.log(people.constructor === People)
     </script>
 </body>
 </html>
