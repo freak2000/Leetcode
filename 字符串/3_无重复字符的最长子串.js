@@ -5,6 +5,7 @@ var lengthOfLongestSubstring = function(s) {
   let tem = 0
   for (let i = 0; i<len; i++) {
     if (i) {
+      // 只要删除前面的，不用删除后面的，因为和前面遍历的情况一样
       map.delete(s[i-1])
     }
     while(tem<len) {
