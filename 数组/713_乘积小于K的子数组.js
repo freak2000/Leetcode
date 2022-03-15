@@ -1,29 +1,17 @@
+// 双指针法
 var numSubarrayProductLessThanK = function(nums, k) {
-  let sum = 0
+  if (k <= 1) return 0
+  let ans = 0
   let len = nums.length
-  let mul = 0
-  let dfs = (level) => {
-    if (level === len) {
-      if (mul<k) {
-        sum++
-        console.log(mul)
-        return sum
-      } else {
-        return sum
-      }
+  let left = 0
+  let mul = 1
+  // 记录每一个以快指针结尾的元素的符合要求的值
+  for (let right = 0; right <= len-1; right++) {
+    mul *= nums[right]
+    while (mul >= k) {
+      mul = mul/nums[left++]
     }
-    let temp = mul
-    if (mul === 0) {
-      mul += nums[level]
-    } else {
-      mul *= nums[level]
-    }
-    dfs(level+1)
-    mul = temp
-    dfs(level+1)
-    return sum
+    ans += right - left + 1
   }
-  return dfs(0)
+  return ans
 };
-
-numSubarrayProductLessThanK([10,5,2,6], 100)
