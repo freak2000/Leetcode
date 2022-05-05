@@ -1,23 +1,16 @@
-let set = new Set([5])
 var wordBreak = function(s, wordDict) {
-  if (set.has(s)) return true
-  let ans = false
-  for (let item of wordDict) {
-    if (item === s.slice(0, item.length)) {
-      set.add(item)
-      if (item.length === s.length) {
-        return true
-      }
-      if (wordBreak(s.slice(item.length), wordDict)){
-        return true
+  let set = new Set(wordDict)
+  let len = s.length
+  let dp = new Array(len+1).fill(false)
+  dp[0] = true
+  for (let i = 1; i<=len; i++) {
+    for (let j = 0; j<i; j++) {
+      if (dp[j] && set.has(s.slice(j, i))) {
+        dp[i] = true
+        break
       }
     }
   }
-  console.log(ans)
-  return ans
+  console.log(dp)
+  return dp[s.length]
 };
-set.clear()
-console.log(set)
-
-
-wordBreak('a','b')
