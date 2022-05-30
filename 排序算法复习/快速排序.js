@@ -1,5 +1,5 @@
 let quick_sort = (array, start, end) => {
-  if (start>=end) {
+  if (start>end) {
     return
   }
   let index = partition(array, start, end)
@@ -10,9 +10,9 @@ let quick_sort = (array, start, end) => {
 
 let partition = (array, start, end) => {
   // 定义一个数字pivot作为基准，用pivotIndex来跟踪其位置，用pivotValue来跟踪其值
-  let pivotIndex = 0
+  let pivotIndex = start
   let pivotValue = array[end]
-  for(let i=0; i<end; i++) {
+  for(let i=start; i<end; i++) {
     // 把所有比基准的值小的元素移到其位置的左边
     if (array[i]<pivotValue) {
       [array[i], array[pivotIndex]] = [array[pivotIndex], array[i]]
