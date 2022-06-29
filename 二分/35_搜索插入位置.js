@@ -3,7 +3,20 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
+
+// 暴力解法，逐个遍历，复杂度为O(n)
+var searchInsert1 = function(nums, target) {
+  let len = nums.length
+  for (let i = 0; i<len; i++) {
+    if (target <= nums[i]) {
+      return i
+    }
+  }
+  return len
+};
+
+
+var searchInsert2 = function(nums, target) {
   let right = nums.length-1
   let left = 0
   let ans = nums.length
@@ -19,13 +32,12 @@ var searchInsert = function(nums, target) {
   console.log(ans)
 };
 
-searchInsert([1, 3, 5, 7], 6)
 
 
-var searchInsert = function(nums, target) {
+var searchInsert3 = function(nums, target) {
   let left = 0
   let right = nums.length-1
-  while(left<right) {
+  while(left <= right) {
     let mid = Math.floor((left+right)/2)
     if (nums[mid] === target) {
       return mid
@@ -34,9 +46,6 @@ var searchInsert = function(nums, target) {
     } else {
       left = mid+1
     }
-  }
-  if (left === right) {
-    return nums[left] >= target ? left : left+1
   }
   return left
 };
