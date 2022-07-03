@@ -15,17 +15,19 @@ var minSubArrayLen = function(target, nums) {
 };
 
 // 滑动窗口
+// 用双重循环来构建滑动窗口
 var minSubArrayLen = function(target, nums) {
-  let res = Infinity
-  let left = 0
+  let le = 0
   let sum = 0
-  for (let right = 0; right<nums.length; right++) {
-    sum+=nums[right]
+  let ans = Infinity
+  // 用for循环控制右指针的移动
+  for (let ri = 0; ri < nums.length; ri++) {
+    sum+=nums[ri]
+    // 控制滑动窗口左指针
     while(sum>=target) {
-      let len = right-left+1
-      res = res>len ? len : res
-      sum-=nums[left++]
+      ans = ans<ri-le+1 ? ans : ri-le+1
+      sum-=nums[le++]
     }
   }
-  return res === Infinity ? 0 : res
+  return ans === Infinity ? 0 : ans
 };
