@@ -11,16 +11,16 @@ var swapPairs = function(head) {
 
 // 迭代法
 var swapPairs = function(head) {
-  let front = new ListNode(0)
-  front.next = head
-  let temp = front
-  while (temp.next && temp.next.next) {
-    let slow = temp.next
-    let fast = temp.next.next
-    temp.next = fast
-    slow.next = fast.next
-    fast.next = slow
-    temp = slow
+  let newHead = new ListNode(0, head)
+  let cur = newHead
+  while(cur.next && cur.next.next) {
+    let node1 = cur.next
+    let node2 = cur.next.next
+    let node3 = cur.next.next.next
+    node1.next = node3
+    node2.next = node1
+    cur.next = node2
+    cur = node1
   }
-  return front.next
+  return newHead.next
 };

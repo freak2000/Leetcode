@@ -1,13 +1,12 @@
-// var reverseList = function(head) {
-//   if (!head || !head.next) {
-//     return head
-//   }
-//   let newHead = reverseList(head.next)
-//   head.next.next = head
-//   head.next = null
-//   return newHead
-// };
-// 递归法
+let reverseList = head => {
+  if (!head || !head.next) {
+    return head
+  }
+  let newHead = reverseList(head.next)
+  head.next.next = head
+  head.next = null
+  return newHead
+}
 
 var reverseList = function(head) {
   let cur = head
