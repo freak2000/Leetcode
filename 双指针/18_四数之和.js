@@ -1,4 +1,43 @@
 var fourSum = function(nums, target) {
+  let res = []
+  nums.sort((a, b) => a-b)
+  let len = nums.length
+  for (let i = 0; i<len-3; i++) {
+    if (i>0 && nums[i] === nums[i-1]) {
+      continue
+    }
+    for (let j = i+1; j<len-2; j++) {
+      if (j > i+1 && nums[j] === nums[j-1]) {
+        continue
+      }
+      let le = j+1
+      let ri = len-1
+      while(le<ri) {
+        let sum = nums[i] + nums[j] + nums[le] + nums[ri]
+        if (sum > target) {
+          ri--
+          continue
+        }
+        if (sum < target) {
+          le++
+          continue
+        }
+        res.push([nums[i], nums[j], nums[le], nums[ri]])
+        le++
+        ri--
+        while(le<ri && nums[le] === nums[le-1]) {
+          le++
+        }
+        while(le<ri && nums[ri] === nums[ri+1]) {
+          ri--
+        }
+      }
+    }
+  }
+  return res
+};
+
+var fourSum = function(nums, target) {
   nums.sort((left, right) => left - right)
   let res = []
   let set = new Set()
