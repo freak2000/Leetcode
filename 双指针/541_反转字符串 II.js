@@ -28,3 +28,19 @@ var reverseStr = function(s, k) {
   }
   return arr.join('')
 };
+
+var reverseStr = function(s, k) {
+  let len = s.length
+  let arr = s.split('')
+  for (let i = 0; i<len; i+=2*k) {
+    let le = i
+    let ri = i+k >= len ? len-1 : i+k-1
+    // console.log(le,ri)
+    while(le<ri) {
+      [arr[le], arr[ri]] = [arr[ri], arr[le]]
+      le++
+      ri--
+    }
+  }
+  return arr.join('')
+};
