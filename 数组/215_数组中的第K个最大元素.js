@@ -9,7 +9,6 @@ var findKthLargest = function(nums, k) {
       return
     }
     let num = partition(left, right)
-    console.log(num)
     if (num === nums.length - k) {
       return nums[num]
     } else if (num>nums.length - k) {
