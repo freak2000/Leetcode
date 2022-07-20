@@ -1,3 +1,4 @@
+// 前序遍历
 var maxDepth = function(root) {
   let max = 0
   let level = 0
@@ -13,4 +14,13 @@ var maxDepth = function(root) {
   }
   dfs(root)
   return max
+};
+
+
+// 后序遍历
+var maxDepth = function(root) {
+  if (!root) {
+    return 0
+  }
+  return 1+Math.max(maxDepth(root.left), maxDepth(root.right))
 };
