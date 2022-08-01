@@ -24,3 +24,27 @@ var permuteUnique = function(nums) {
   backtrace(nums)
   return ans
 };
+
+var permuteUnique = function(nums) {
+  let ans = []
+  let temp = []
+  let set = new Set()
+  let backtrace = index => {
+    if (index === nums.length) {
+      ans.push([...temp])
+    }
+    let set2 = new Set()
+    for (let i = 0; i<nums.length; i++) {
+      if (!set.has(i) && !set2.has(nums[i])) {
+        set2.add(nums[i])
+        temp.push(nums[i])
+        set.add(i)
+        backtrace(index+1)
+        temp.pop()
+        set.delete(i)
+      }
+    }
+  }
+  backtrace(0)
+  return ans
+};

@@ -3,6 +3,7 @@ var mySqrt = function(x) {
   let ri = x
   let ans = 0
   while(le<=ri) {
+    debugger
     let mid = Math.floor(le + (ri - le)/2)
     if (mid*mid === x) {
       return mid
@@ -15,3 +16,5 @@ var mySqrt = function(x) {
   }
   return ans
 };
+
+console.log(mySqrt(50))

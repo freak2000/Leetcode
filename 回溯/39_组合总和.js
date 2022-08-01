@@ -1,22 +1,19 @@
 var combinationSum = function(candidates, target) {
   let ans = []
-  let tem = []
   let sum = 0
-  let backtrace = (candidates, index) => {
-    if (index === candidates.length || sum>target) {
-      return
-    }
+  let tem = []
+  let backtrace = index => {
     if (sum === target) {
-      ans.push(tem.slice(0))
+      ans.push([...tem])
     }
-    for(let i = index; i<candidates.length; i++) {
+    for (let i = index; i<candidates.length && sum<target; i++) {
       tem.push(candidates[i])
       sum+=candidates[i]
-      backtrace(candidates, i)
-      tem.pop()
+      backtrace(i)
       sum-=candidates[i]
+      tem.pop()
     }
   }
-  backtrace(candidates, 0)
+  backtrace(0)
   return ans
 };
