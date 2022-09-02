@@ -30,3 +30,22 @@ var rob = function(root) {
   val2+=rob(root.right)
   return Math.max(val2, val1)
 };
+
+// 利用动态规划加深度优先搜寻
+var rob = function(root) {
+  let dfs = root => {
+      if (!root) {
+          return [0, 0]
+      }
+      let no = 0
+      let yes = root.val
+      let le = dfs(root.left)
+      let ri = dfs(root.right)
+      no += Math.max(le[0], le[1])
+      no += Math.max(ri[0], ri[1])
+      yes += (le[1] + ri[1])
+      return [yes, no]
+  }
+  let ans = dfs(root)
+  return Math.max(ans[0], ans[1])
+};
