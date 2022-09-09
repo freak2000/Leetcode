@@ -14,3 +14,13 @@ var maxSubArray = function(nums) {
   return ans
 };
 
+var maxSubArray = function(nums) {
+  let len = nums.length
+  let ans = -Infinity
+  let dp = new Array(len+1).fill(0)
+  for (let i = len-1; i>=0; i--) {
+      dp[i] = dp[i+1] >= 0 ? nums[i] + dp[i+1] : nums[i]
+      ans = Math.max(ans, dp[i])
+  }
+  return ans
+};
