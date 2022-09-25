@@ -21,3 +21,28 @@ var findSubsequences = function(nums) {
   backtrace(-Infinity, 0)
   return ans
 };
+
+
+var findSubsequences = function(nums) {
+  let ans = []
+  let temp = []
+  let backtrace = index => {
+    if (temp.length >= 2) {
+      ans.push([...temp])
+    }
+    let set = new Set()
+    for (let i = index; i<nums.length; i++) {
+      if (set.has(nums[i])) {
+        continue
+      }
+      if (!temp.length || temp[temp.length-1] <= nums[i]) {
+        set.add(nums[i])
+        temp.push(nums[i])
+        backtrace(i+1)
+        temp.pop()
+      }
+    }
+  }
+  backtrace(0)
+  return ans
+};

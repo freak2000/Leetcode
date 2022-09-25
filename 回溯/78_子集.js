@@ -13,3 +13,20 @@ var subsets = function(nums) {
   backtrace(nums, 0)
   return ans
 };
+
+var subsets = function(nums) {
+  let ans = []
+  let temp = []
+  let backtrace = (index) => {
+    if (index === nums.length) {
+      ans.push([...temp])
+      return
+    }
+    temp.push(nums[index])
+    backtrace(index+1)
+    temp.pop()
+    backtrace(index+1)
+  }
+  backtrace(0)
+  return ans
+};
